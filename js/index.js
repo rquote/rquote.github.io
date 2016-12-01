@@ -73,7 +73,7 @@ function typeIt() {
         t.append(c[i]);
         i++;
       }
-    }, 40);
+    }, 25);
   };
 };
 
@@ -125,11 +125,13 @@ function callback(data) {
 
   var tag = getParameterByName('tag');
   var filteredQuotes = rows.filter(function (el) {
-    return el.tag.toLowerCase() === tag.toLowerCase();
+    if (el && el.tag) {
+      return el.tag.toLowerCase() === tag.toLowerCase();
+    }
   });
   var quote = filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)].quote;
   $('#val').text(quote);
-  //typeIt();
+  // typeIt();
 }
 
 $(document).ready(function () {
